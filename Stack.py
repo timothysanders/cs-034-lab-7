@@ -21,3 +21,11 @@ class Stack:
         
         # Return the popped item
         return popped_item
+
+    def push(cancellation_details)
+
+    def peek()
+
+    def is_empty()
+
+    def get_size()
