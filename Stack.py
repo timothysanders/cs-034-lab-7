@@ -3,17 +3,24 @@ from LinkedList import LinkedList
 
 class Stack:
   def __init__(self):
+    # Create an empty linkedlist to hold upcoming cancellation
     self.linked_list = LinkedList()
     self.size = 0
 
-  def push(self, new_item):   # substitute "cancellation_details" for "new_item"
-    new_node = Node(new_item)
-    self.linked_list.prepend(new_node)
+  def push(self, cancellation_details):   # substitute "cancellation_details" for "new_item"
+    # Create a new node to hold the item
+    new_node = Node(cancellation_details)
+    # Insert the node as the list head (top of stack)
+    self.linked_list.prepend(cancellation_details)
+    # Increment size by 1
     self.size += 1
 
   def pop(self):
+    # store the data from head node for return
     popped_item = self.linked_list.head.data
+    # Copy data from list's head node (stack's top node)
     self.linked_list.remove_after(None)
+    # Decrement size by 1
     self.size -= 1
     return popped_item
 
