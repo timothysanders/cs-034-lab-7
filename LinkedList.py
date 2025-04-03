@@ -4,7 +4,7 @@ class LinkedList:
       self.tail = None
 
    def append(self, new_node):
-      if self.head == None:
+      if self.head is None:
          self.head = new_node
          self.tail = new_node
       else:
@@ -12,7 +12,7 @@ class LinkedList:
          self.tail = new_node
 
    def prepend(self, new_node):
-      if self.head == None:
+      if self.head is None:
          self.head = new_node
          self.tail = new_node
       else:
@@ -20,7 +20,7 @@ class LinkedList:
          self.head = new_node
 
    def insert_after(self, current_node, new_node):
-      if self.head == None:
+      if self.head is None:
          self.head = new_node
          self.tail = new_node
       elif current_node is self.tail:
@@ -32,14 +32,14 @@ class LinkedList:
    
    def remove_after(self, current_node):
      # Special case, remove head
-     if (current_node == None) and (self.head != None):
+     if (current_node is None) and (self.head is not None):
         succeeding_node = self.head.next
         self.head = succeeding_node  
-        if succeeding_node == None:    # Removed last item
+        if succeeding_node is None:    # Removed last item
            self.tail = None
-     elif current_node.next != None:
+     elif current_node.next is not None:
         succeeding_node = current_node.next.next
         current_node.next = succeeding_node
-        if succeeding_node == None:    # Removed tail
+        if succeeding_node is None:    # Removed tail
            self.tail = current_node
 
