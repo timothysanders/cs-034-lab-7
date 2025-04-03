@@ -22,10 +22,14 @@ class Stack:
         # Return the popped item
         return popped_item
 
-    def push(cancellation_details)
+    def push(self, cancellation_details):
+        pass
 
-    def peek()
+    def peek(self):
+        pass
 
-    def is_empty()
+    def is_empty(self):
+        pass
 
-    def get_size()
+    def get_size(self):
+        pass

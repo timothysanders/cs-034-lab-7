@@ -63,7 +63,7 @@ class ArrayQueue:
         # Create new list and copy existing items
         new_size = len(self.queue_list) * 2
         if self.max_length >= 0 and new_size > self.max_length:
-            new_size = max_length
+            new_size = self.max_length
         new_list = [0] * new_size
         for i in range(self.length):
             item_index = (self.front_index + i) % len(self.queue_list)
@@ -74,10 +74,14 @@ class ArrayQueue:
         self.front_index = 0
 
 
-    def enqueue(call_details)
+    def enqueue(self, call_details):
+        pass
 
-    def front()
+    def front(self):
+        pass
 
-    def is_empty()
+    def is_empty(self):
+        pass
 
-    def get_size()
+    def get_size(self):
+        pass
