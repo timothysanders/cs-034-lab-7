@@ -72,3 +72,12 @@ class ArrayQueue:
         # Assign new list and reset front_index to 0
         self.queue_list = new_list
         self.front_index = 0
+
+
+    def enqueue(call_details)
+
+    def front()
+
+    def is_empty()
+
+    def get_size()
