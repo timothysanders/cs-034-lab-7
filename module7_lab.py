@@ -52,3 +52,29 @@ class LinkedList:
            self.tail = current_node
 
 
+class Stack:
+  def __init__(self):
+    self.linked_list = LinkedList()
+    self.size = 0
+
+  def push(self, new_item):   # substitute "cancellation_details" for "new_item"
+    new_node = Node(new_item)
+    self.linked_list.prepend(new_node)
+    self.size += 1
+
+  def pop(self):
+    popped_item = self.linked_list.head.data
+    self.linked_list.remove_after(None)
+    self.size -= 1
+    return popped_item
+
+  def peek(self):
+    if self.linked_list.head == None:
+      raise IndexError("Peek from empty stack")
+    return self.linked_list.head.data
+
+  def is_empty(self):
+    return self.linked_list.head == None
+
+  def get_size(self):
+    return self.size
