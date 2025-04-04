@@ -1,3 +1,5 @@
+import unittest
+
 class Queue:
     def __init__(self, maximum_length=-1):
         self.queue_list = []  # Start with an empty list
@@ -11,7 +13,7 @@ class Queue:
     def get_size(self):
         return self.length
 
-    def enqueue(self, new_item):
+    def enqueue(self, new_item):    # "new_item" can be substituted by "call_details" in the actual implementation
         # If at max length, return False
         if self.max_length >= 0 and self.length == self.max_length:
             return False
@@ -61,6 +63,23 @@ class Queue:
         self.front_index = 0
 
 
+class TestQueue(unittest.TestCase):
+
+  def test_queue_FIFO_behavior(self):
+    queue = Queue()
+    queue.enqueue("Call from customer A")
+    queue.enqueue("Call from customer B")
+    queue.enqueue("Call from customer C")
+
+    self.assertEqual(queue.get_size(), 3)
+    self.assertEqual(queue.front(), "Call from customer A")
+    self.assertEqual(queue.dequeue(), "Call from customer A")
+    self.assertEqual(queue.dequeue(), "Call from customer B")
+    self.assertEqual(queue.dequeue(), "Call from customer C")
+    self.assertTrue(queue.is_empty())
+
+# Test the general functionality of array-based Queue
+unittest.TextTestRunner().run(unittest.TestLoader().loadTestsFromTestCase(TestQueue))
 
 '''
 class ArrayQueue:
