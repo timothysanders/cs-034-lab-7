@@ -1,16 +1,19 @@
 import Stack
-import QueueArray
+import ArrayQueue
+import unittest
 
 
 
 if __name__ == "__main__":
     # Run unit tests
+    import testing_cases as tc
+
     print("\n========== RUNNING UNIT TESTS ==========")
-    unittest.TextTestRunner().run(unittest.TestLoader().loadTestsFromTestCase(TestTicketSystem))
+    unittest.TextTestRunner().run(unittest.TestLoader().loadTestsFromTestCase(tc.TestTicketSystem))
 
     # Example demonstrations
     print("\n========== STACK DEMONSTRATION (LIFO: Ticket Cancellations) ==========")
-    cancellation_stack = Stack()
+    cancellation_stack = Stack.Stack()
     cancellations = ["Ticket-101", "Ticket-250", "Ticket-399"]
 
     for ticket in cancellations:
@@ -23,7 +26,7 @@ if __name__ == "__main__":
         print(f"[Processed] Refunded ticket: {returned_ticket}")
 
     print("\n========== QUEUE DEMONSTRATION (FIFO: Hotline Requests) ==========")
-    customer_queue = Queue()
+    customer_queue = ArrayQueue.Queue()
     customers = ["Michael", "Tim", "Megan"]
 
     for name in customers:
