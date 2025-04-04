@@ -1,4 +1,4 @@
-#Name(s): Michael Jung ID:10680322, Timothy Sanders ID:, Yu Yu Ng ID:
+#Name(s): Michael Jung ID:10680322, Timothy Sanders ID:, Yu Yu Ng (Megan Ng) ID:
 import unittest
 
 
@@ -179,31 +179,37 @@ class TestTicketSystem(unittest.TestCase):
 
 unittest.TextTestRunner().run(unittest.TestLoader().loadTestsFromTestCase(TestTicketSystem))
 
-# Examples to demonstrate the functionality and application of 
-# tickets cancellation stack and customer hotline waiting queue
+# Unit Test for general functionality check
+# Examples to demonstrate tickets cancellation stack and customer hotline waiting queue
 if __name__ == "__main__":
-  print("\\n========== STACK DEMONSTRATION (LIFO: Ticket Cancellations) ==========")
-  cancellation_stack = Stack()
-  cancellations = ["Ticket-101", "Ticket-250", "Ticket-399"]
+    # Run unit tests
+    print("\n========== RUNNING UNIT TESTS ==========")
+    unittest.TextTestRunner().run(unittest.TestLoader().loadTestsFromTestCase(TestTicketSystem))
 
-  for ticket in cancellations:
-    print(f"[Action] Customer canceled ticket: {ticket}")
-    cancellation_stack.push(ticket)
+    # Example demonstrations
+    print("\n========== STACK DEMONSTRATION (LIFO: Ticket Cancellations) ==========")
+    cancellation_stack = Stack()
+    cancellations = ["Ticket-101", "Ticket-250", "Ticket-399"]
 
-  print("\\n[Now processing returned tickets in LIFO order...]")
-  while not cancellation_stack.is_empty():
-    returned_ticket = cancellation_stack.pop()
-    print(f"[Processed] Refunded ticket: {returned_ticket}")
+    for ticket in cancellations:
+        print(f"[Action] Customer canceled ticket: {ticket}")
+        cancellation_stack.push(ticket)
 
-  print("\\n========== QUEUE DEMONSTRATION (FIFO: Hotline Requests) ==========")
-  customer_queue = Queue()
-  customers = ["Michael", "Tim", "Megan"]
+    print("\n[Now processing returned tickets in LIFO order...]")
+    while not cancellation_stack.is_empty():
+        returned_ticket = cancellation_stack.pop()
+        print(f"[Processed] Refunded ticket: {returned_ticket}")
 
-  for name in customers:
-    print(f"[Call] {name} wants to purchase a ticket.")
-    customer_queue.enqueue(name)
+    print("\n========== QUEUE DEMONSTRATION (FIFO: Hotline Requests) ==========")
+    customer_queue = Queue()
+    customers = ["Michael", "Tim", "Megan"]
 
-  print("\\n[Now processing customer calls in FIFO order...]")
-  while not customer_queue.is_empty():
-    customer = customer_queue.dequeue()
-    print(f"[Processed] Assigned ticket to {customer}")
+    for name in customers:
+        print(f"[Call] {name} wants to purchase a ticket.")
+        customer_queue.enqueue(name)
+
+    print("\n[Now processing customer calls in FIFO order...]")
+    while not customer_queue.is_empty():
+        customer = customer_queue.dequeue()
+        print(f"[Processed] Assigned ticket to {customer}")
+
