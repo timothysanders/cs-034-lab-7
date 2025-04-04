@@ -1,11 +1,12 @@
 #Name(s): Michael Jung ID:10680322, Timothy Sanders ID:, Yu Yu Ng (Megan Ng) ID:
-
 import unittest
+import ArrayQueue
+import Stack
 
 class TestTicketSystem(unittest.TestCase):
 
     def test_stack_LIFO_behavior(self):
-        stack = Stack()
+        stack = Stack.Stack()
         stack.push("Cancel ticket #101")
         stack.push("Cancel ticket #102")
         stack.push("Cancel ticket #103")
@@ -19,7 +20,7 @@ class TestTicketSystem(unittest.TestCase):
         self.assertTrue(stack.is_empty())
 
     def test_queue_FIFO_behavior(self):
-        queue = Queue()
+        queue = ArrayQueue.Queue()
         queue.enqueue("Call from customer A")
         queue.enqueue("Call from customer B")
         queue.enqueue("Call from customer C")
