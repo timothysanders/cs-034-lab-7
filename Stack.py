@@ -4,7 +4,7 @@ import unittest
 
 
 class Stack:
-        """
+    """
     Implement a Stack data structure.
 
     Parameters
