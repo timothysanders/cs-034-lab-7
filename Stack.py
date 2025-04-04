@@ -34,16 +34,17 @@ class Stack:
         self.size = 0
 
     def push(self, new_item):   # substitute "cancellation_details" for "new_item"
-        new_node = Node(new_item)
-        self.linked_list.prepend(new_node)
-        self.size += 1
         """
         Prepends a new node to the stack.
 
         Returns
         -------
         None
-        """
+        """        
+        new_node = Node(new_item)
+        self.linked_list.prepend(new_node)
+        self.size += 1
+
     def pop(self):
         """
         Removes the data that the head node points to.
