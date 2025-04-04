@@ -3,99 +3,165 @@ import unittest
 
 
 class Node:
-   def __init__(self, initial_data):
-      self.data = initial_data
-      self.next = None
+    """
+    Implement a Node class.
+
+    Parameters
+    ----------
+    initial_data
+
+    Attributes
+    ----------
+    data
+    next
+    """
+    def __init__(self, initial_data):
+        self.data = initial_data
+        self.next = None
 
 
 class LinkedList:
-   def __init__(self):
-      self.head = None
-      self.tail = None
+    def __init__(self):
+        self.head = None
+        self.tail = None
 
-   def append(self, new_node):
-      if self.head is None:
-         self.head = new_node
-         self.tail = new_node
-      else:
-         self.tail.next = new_node
-         self.tail = new_node
+    def append(self, new_node):
+        if self.head is None:
+            self.head = new_node
+            self.tail = new_node
+        else:
+            self.tail.next = new_node
+            self.tail = new_node
 
-   def prepend(self, new_node):
-      if self.head is None:
-         self.head = new_node
-         self.tail = new_node
-      else:
-         new_node.next = self.head
-         self.head = new_node
+    def prepend(self, new_node):
+        if self.head is None:
+            self.head = new_node
+            self.tail = new_node
+        else:
+            new_node.next = self.head
+            self.head = new_node
 
-   def insert_after(self, current_node, new_node):
-      if self.head is None:
-         self.head = new_node
-         self.tail = new_node
-      elif current_node is self.tail:
-         self.tail.next = new_node
-         self.tail = new_node
-      else:
-         new_node.next = current_node.next
-         current_node.next = new_node
+    def insert_after(self, current_node, new_node):
+        if self.head is None:
+            self.head = new_node
+            self.tail = new_node
+        elif current_node is self.tail:
+            self.tail.next = new_node
+            self.tail = new_node
+        else:
+            new_node.next = current_node.next
+            current_node.next = new_node
    
-   def remove_after(self, current_node):
-     # Special case, remove head
-     if (current_node is None) and (self.head is not None):
-        succeeding_node = self.head.next
-        self.head = succeeding_node  
-        if succeeding_node is None:    # Removed last item
-           self.tail = None
-     elif current_node.next is not None:
-        succeeding_node = current_node.next.next
-        current_node.next = succeeding_node
-        if succeeding_node is None:    # Removed tail
-           self.tail = current_node
+    def remove_after(self, current_node):
+        # Special case, remove head
+        if (current_node is None) and (self.head is not None):
+            succeeding_node = self.head.next
+            self.head = succeeding_node
+            if succeeding_node is None:    # Removed last item
+                self.tail = None
+        elif current_node.next is not None:
+            succeeding_node = current_node.next.next
+            current_node.next = succeeding_node
+            if succeeding_node is None:    # Removed tail
+                self.tail = current_node
 
 
 class Stack:
-  def __init__(self):
-    self.linked_list = LinkedList()
-    self.size = 0
+    def __init__(self):
+        self.linked_list = LinkedList()
+        self.size = 0
 
-  def push(self, new_item):   # substitute "cancellation_details" for "new_item"
-    new_node = Node(new_item)
-    self.linked_list.prepend(new_node)
-    self.size += 1
+    def push(self, new_item):   # substitute "cancellation_details" for "new_item"
+        new_node = Node(new_item)
+        self.linked_list.prepend(new_node)
+        self.size += 1
 
-  def pop(self):
-    popped_item = self.linked_list.head.data
-    self.linked_list.remove_after(None)
-    self.size -= 1
-    return popped_item
+    def pop(self):
+        popped_item = self.linked_list.head.data
+        self.linked_list.remove_after(None)
+        self.size -= 1
+        return popped_item
 
-  def peek(self):
-    if self.linked_list.head == None:
-      raise IndexError("Peek from empty stack")
-    return self.linked_list.head.data
+    def peek(self):
+        if self.linked_list.head == None:
+            raise IndexError("Peek from empty stack")
+        return self.linked_list.head.data
 
-  def is_empty(self):
-    return self.linked_list.head == None
+    def is_empty(self):
+        return self.linked_list.head == None
 
-  def get_size(self):
-    return self.size
+    def get_size(self):
+        return self.size
 
 
 class Queue:
-    def __init__(self, maximum_length=-1):
+    """
+    Implement a Queue data structure.
+
+    Parameters
+    ----------
+    maximum_length : int = -1
+
+    Attributes
+    ----------
+    queue_list : list
+    front_index : int
+    length : int
+    max_length : int
+
+    Methods
+    -------
+    is_empty()
+        Check if the queue is empty.
+    get_size()
+        Get the size of the queue.
+    enqueue(new_item)
+        Add a new item to the queue.
+    dequeue()
+        Remove and return the item from the queue.
+    front()
+        Get the front item from the queue.
+    resize()
+        Resize the queue.
+    """
+    def __init__(self, maximum_length: int=-1):
         self.queue_list = []  # Start with an empty list
         self.front_index = 0
         self.length = 0
         self.max_length = maximum_length
 
-    def is_empty(self):
+    def is_empty(self) -> bool:
+        """
+        Check if the queue is empty.
+
+        Returns
+        -------
+        bool
+        """
         return self.length == 0
 
-    def get_size(self):
+    def get_size(self) -> int:
+        """
+        Get the size of the queue.
+
+        Returns
+        -------
+        int
+        """
         return self.length
 
-    def enqueue(self, new_item):    # "new_item" can be substituted by "call_details" in the actual implementation
+    def enqueue(self, new_item) -> bool:
+        """
+        Add a new item to the queue.
+
+        Parameters
+        ----------
+        new_item
+
+        Returns
+        -------
+        bool
+        """
         # If at max length, return False
         if self.max_length >= 0 and self.length == self.max_length:
             return False
@@ -111,6 +177,19 @@ class Queue:
         return True
 
     def dequeue(self):
+        """
+        Remove and return the item from the queue.
+
+        Returns
+        -------
+        to_return
+            The item from the front of the queue.
+
+        Raises
+        ------
+        IndexError
+            If the queue is empty.
+        """
         if self.is_empty():
             raise IndexError("Dequeue from empty queue")
 
@@ -124,16 +203,34 @@ class Queue:
         return to_return
 
     def front(self):
+        """
+        Get the front item from the queue.
+
+        Returns
+        -------
+
+        Raises
+        ------
+        IndexError
+            If the queue is empty.
+        """
         if self.is_empty():
             raise IndexError("Empty queue")
         return self.queue_list[self.front_index]
 
-    def resize(self):
+    def resize(self) -> None:
+        """
+        Resize the queue.
+
+        Returns
+        -------
+        None
+        """
         # Create new list and copy existing items
         new_size = len(self.queue_list) * 2 if len(self.queue_list) > 0 else 1
         if self.max_length >= 0 and new_size > self.max_length:
             new_size = self.max_length
-        
+
         new_list = [0] * new_size
 
         for i in range(self.length):
