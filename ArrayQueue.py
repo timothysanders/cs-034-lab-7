@@ -1,19 +1,73 @@
 import unittest
 
 class Queue:
-    def __init__(self, maximum_length=-1):
+    """
+    Implement a Queue data structure.
+
+    Parameters
+    ----------
+    maximum_length : int = -1
+
+    Attributes
+    ----------
+    queue_list : list
+    front_index : int
+    length : int
+    max_length : int
+
+    Methods
+    -------
+    is_empty()
+        Check if the queue is empty.
+    get_size()
+        Get the size of the queue.
+    enqueue(new_item)
+        Add a new item to the queue.
+    dequeue()
+        Remove and return the item from the queue.
+    front()
+        Get the front item from the queue.
+    resize()
+        Resize the queue.
+    """
+    def __init__(self, maximum_length: int=-1):
         self.queue_list = []  # Start with an empty list
         self.front_index = 0
         self.length = 0
         self.max_length = maximum_length
 
-    def is_empty(self):
+    def is_empty(self) -> bool:
+        """
+        Check if the queue is empty.
+
+        Returns
+        -------
+        bool
+        """
         return self.length == 0
 
-    def get_size(self):
+    def get_size(self) -> int:
+        """
+        Get the size of the queue.
+
+        Returns
+        -------
+        int
+        """
         return self.length
 
-    def enqueue(self, new_item):    # "new_item" can be substituted by "call_details" in the actual implementation
+    def enqueue(self, new_item) -> bool:
+        """
+        Add a new item to the queue.
+
+        Parameters
+        ----------
+        new_item
+
+        Returns
+        -------
+        bool
+        """
         # If at max length, return False
         if self.max_length >= 0 and self.length == self.max_length:
             return False
@@ -29,6 +83,19 @@ class Queue:
         return True
 
     def dequeue(self):
+        """
+        Remove and return the item from the queue.
+
+        Returns
+        -------
+        to_return
+            The item from the front of the queue.
+
+        Raises
+        ------
+        IndexError
+            If the queue is empty.
+        """
         if self.is_empty():
             raise IndexError("Dequeue from empty queue")
 
@@ -42,11 +109,29 @@ class Queue:
         return to_return
 
     def front(self):
+        """
+        Get the front item from the queue.
+
+        Returns
+        -------
+
+        Raises
+        ------
+        IndexError
+            If the queue is empty.
+        """
         if self.is_empty():
             raise IndexError("Empty queue")
         return self.queue_list[self.front_index]
 
-    def resize(self):
+    def resize(self) -> None:
+        """
+        Resize the queue.
+
+        Returns
+        -------
+        None
+        """
         # Create new list and copy existing items
         new_size = len(self.queue_list) * 2 if len(self.queue_list) > 0 else 1
         if self.max_length >= 0 and new_size > self.max_length:
