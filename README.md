@@ -30,3 +30,47 @@ Your team (2-3 students) has been hired by a ticketing service company that mana
   - Queue class with all required methods implemented.
   - Example usage demonstrating all class methods clearly and thoroughly in the provided project scenarios.
   - Documentation within the file clearly explaining your data structures, methods, and any design choices made.
+
+## Running The Code
+- To run the code, please follow the steps that are shown below
+1. After cloning the repository, create a virtual environment and activate it
+    ```shell
+    python -m venv .venv
+    
+    source .venv/bin/activate
+    ```
+2. To run the test cases in `testing_cases.py`, run the following
+    ```shell
+    python -m unittest testing_cases.py
+    ```
+3. To run the main demo, which shows the Customer Service and Ticket Cancellation scenarios, run the following
+    ```shell
+    python main_demo.py
+    ```
+    - This will return something similar to the following
+    ```text
+    ========== STACK DEMONSTRATION (LIFO: Ticket Cancellations) ==========
+    [Action] Customer canceled ticket: Ticket-101
+    [Action] Customer canceled ticket: Ticket-250
+    [Action] Customer canceled ticket: Ticket-399
+    
+    [Now processing returned tickets in LIFO order...]
+    [Processed] Refunded ticket: Ticket-399
+    [Processed] Refunded ticket: Ticket-250
+    [Processed] Refunded ticket: Ticket-101
+    
+    ========== QUEUE DEMONSTRATION (FIFO: Hotline Requests) ==========
+    [Call] Michael wants to purchase a ticket.
+    [Call] Tim wants to purchase a ticket.
+    [Call] Megan wants to purchase a ticket.
+    
+    [Now processing customer calls in FIFO order...]
+    [Processed] Assigned ticket to Michael
+    [Processed] Assigned ticket to Tim
+    [Processed] Assigned ticket to Megan
+    ```
+4. Unit tests may be run on each module file as follows
+    ```shell
+    python ArrayQueue.py
+    python Stack.py
+    ```
